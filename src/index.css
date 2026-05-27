@@ -4,89 +4,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 240 15% 4%;
+    --foreground: 180 100% 90%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 240 15% 7%;
+    --card-foreground: 180 100% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 15% 7%;
+    --popover-foreground: 180 100% 90%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 240 15% 4%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 300 100% 50%;
+    --secondary-foreground: 240 15% 4%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 10% 15%;
+    --muted-foreground: 180 30% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 60 100% 50%;
+    --accent-foreground: 240 15% 4%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 180 100% 25%;
+    --input: 240 10% 15%;
+    --ring: 180 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Custom cyberpunk vars */
+    --neon-cyan: #00ffff;
+    --neon-pink: #ff00ff;
+    --neon-yellow: #ffff00;
+    --neon-blue: #0080ff;
+    --bg-dark: #050510;
+    --bg-card: #0a0a1e;
+    --bg-card2: #0d0d20;
   }
 }
 
@@ -97,5 +52,564 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Rajdhani", sans-serif;
+    background-color: var(--bg-dark);
+    overflow-x: hidden;
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Orbitron", monospace;
+  }
+}
+
+/* ===== ЖИВОЙ ФОН ===== */
+.cyber-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+
+.cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(60px);
+  }
+}
+
+.cyber-grid-2 {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 0, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 255, 0.03) 1px, transparent 1px);
+  background-size: 180px 180px;
+  animation: gridMove2 40s linear infinite reverse;
+}
+
+@keyframes gridMove2 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(180px);
+  }
+}
+
+.cyber-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: orbFloat 8s ease-in-out infinite;
+}
+
+.cyber-glow-orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 255, 0.12) 0%,
+    transparent 70%
+  );
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s;
+}
+.cyber-glow-orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 255, 0.1) 0%,
+    transparent 70%
+  );
+  bottom: -150px;
+  right: -150px;
+  animation-delay: -4s;
+}
+.cyber-glow-orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 100, 255, 0.08) 0%,
+    transparent 70%
+  );
+  top: 40%;
+  left: 40%;
+  animation-delay: -2s;
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+/* Particles canvas */
+#particles {
+  position: absolute;
+  inset: 0;
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+.nav-cyber {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(5, 5, 16, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.nav-link {
+  position: relative;
+  font-family: "Orbitron", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0, 255, 255, 0.7);
+  transition: color 0.3s;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
+  transition: width 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--neon-cyan);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ===== КНОПКИ ===== */
+.btn-cyber {
+  position: relative;
+  font-family: "Orbitron", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000;
+  background: var(--neon-cyan);
+  border: none;
+  padding: 0.75rem 2rem;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s;
+  text-shadow: none;
+}
+
+.btn-cyber:hover {
+  background: #fff;
+  box-shadow:
+    0 0 30px var(--neon-cyan),
+    0 0 60px rgba(0, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-cyber-outline {
+  position: relative;
+  font-family: "Orbitron", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  background: transparent;
+  border: 1px solid var(--neon-cyan);
+  padding: 0.75rem 2rem;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-cyber-outline:hover {
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.3),
+    inset 0 0 20px rgba(0, 255, 255, 0.05);
+}
+
+.btn-pink {
+  background: var(--neon-pink);
+  color: #fff;
+}
+
+.btn-pink:hover {
+  background: #ff66ff;
+  box-shadow:
+    0 0 30px var(--neon-pink),
+    0 0 60px rgba(255, 0, 255, 0.4);
+}
+
+/* ===== КАРТОЧКИ ===== */
+.card-cyber {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.card-cyber::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neon-cyan),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card-cyber:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+.card-cyber:hover::before {
+  opacity: 1;
+}
+
+.card-cyber-pink {
+  border-color: rgba(255, 0, 255, 0.15);
+}
+
+.card-cyber-pink::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neon-pink),
+    transparent
+  );
+}
+
+.card-cyber-pink:hover {
+  border-color: rgba(255, 0, 255, 0.5);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(255, 0, 255, 0.1);
+}
+
+/* ===== НЕОНОВЫЙ ТЕКСТ ===== */
+.neon-text-cyan {
+  color: var(--neon-cyan);
+  text-shadow:
+    0 0 20px rgba(0, 255, 255, 0.8),
+    0 0 40px rgba(0, 255, 255, 0.4);
+}
+
+.neon-text-pink {
+  color: var(--neon-pink);
+  text-shadow:
+    0 0 20px rgba(255, 0, 255, 0.8),
+    0 0 40px rgba(255, 0, 255, 0.4);
+}
+
+.neon-text-yellow {
+  color: var(--neon-yellow);
+  text-shadow:
+    0 0 20px rgba(255, 255, 0, 0.8),
+    0 0 40px rgba(255, 255, 0, 0.4);
+}
+
+/* ===== РАЗДЕЛИТЕЛИ ===== */
+.cyber-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--neon-cyan),
+    var(--neon-pink),
+    transparent
+  );
+  margin: 0;
+  opacity: 0.4;
+}
+
+/* ===== СЕКЦИИ ===== */
+.section {
+  position: relative;
+  z-index: 10;
+  padding: 6rem 0;
+}
+
+/* ===== BADGE ===== */
+.badge-cyber {
+  font-family: "Orbitron", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  background: rgba(0, 255, 255, 0.05);
+  display: inline-block;
+}
+
+/* ===== IP БЛОК ===== */
+.ip-block {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  padding: 0.5rem 1.5rem;
+  font-family: "Orbitron", monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--neon-cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.ip-block:hover {
+  background: rgba(0, 255, 255, 0.05);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* ===== PRICE TAG ===== */
+.price-tag {
+  font-family: "Orbitron", monospace;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--neon-yellow);
+  text-shadow: 0 0 15px rgba(255, 255, 0, 0.6);
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+  font-family: "Orbitron", monospace;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title span {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+}
+
+/* ===== СТАТУС СЕРВЕРА ===== */
+.server-online {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Orbitron", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+}
+
+.server-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 10px #00ff88;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 10px #00ff88;
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow:
+      0 0 20px #00ff88,
+      0 0 40px rgba(0, 255, 136, 0.4);
+  }
+}
+
+/* ===== HERO ANIMATIONS ===== */
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    top: -5%;
+  }
+  100% {
+    top: 105%;
+  }
+}
+
+.hero-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 255, 0.4),
+    transparent
+  );
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+}
+
+/* ===== DONATE TIERS ===== */
+.donate-tier {
+  position: relative;
+  overflow: hidden;
+}
+
+.donate-tier::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.02) 50%,
+    transparent 60%
+  );
+  animation: shinePass 6s ease-in-out infinite;
+}
+
+@keyframes shinePass {
+  0%,
+  70%,
+  100% {
+    transform: translateX(-100%) rotate(0deg);
+    opacity: 0;
+  }
+  35% {
+    transform: translateX(100%) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* ===== CONTACT FORM ===== */
+.cyber-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  color: rgba(0, 255, 255, 0.9);
+  padding: 0.75rem 1rem;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.cyber-input:focus {
+  border-color: var(--neon-cyan);
+  box-shadow:
+    0 0 15px rgba(0, 255, 255, 0.2),
+    inset 0 0 15px rgba(0, 255, 255, 0.03);
+}
+
+.cyber-input::placeholder {
+  color: rgba(0, 255, 255, 0.3);
+}
+
+/* ===== FLOATING BLOCKS ===== */
+@keyframes floatBlock {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  66% {
+    transform: translateY(10px) rotate(-3deg);
+  }
+}
+
+/* ===== ЧИСЛО СТАТИСТИКИ ===== */
+.stat-number {
+  font-family: "Orbitron", monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 255, 0.6);
 }
