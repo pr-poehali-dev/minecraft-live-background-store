@@ -92,11 +92,57 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       {/* ═══ ЖИВОЙ ФОН ═══════════════════════════════════════════════════ */}
       <div className="video-bg-wrap" style={{ opacity: transitioning ? 0 : 1, transition: 'opacity 0.6s ease' }}>
-        <div className={T.stubClass} />
-        <div className={T.overlayClass} />
-        <div className={`video-grid ${T.gridClass}`} />
-        <div className={`scanline ${T.scanClass}`} />
-        <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0 }} />
+
+        {/* YouTube iframe фон — Анархия */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          opacity: active === 'anarchy' ? 1 : 0,
+          transition: 'opacity 0.8s ease',
+          pointerEvents: 'none',
+        }}>
+          <iframe
+            src="https://www.youtube.com/embed/AxyHdR1SaMY?autoplay=1&mute=1&loop=1&playlist=AxyHdR1SaMY&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3"
+            allow="autoplay; encrypted-media"
+            style={{
+              position: 'absolute',
+              top: '50%', left: '50%',
+              transform: 'translate(-50%, -50%) scale(1.5)',
+              width: '100vw', height: '56.25vw',
+              minWidth: '177.78vh', minHeight: '100vh',
+              border: 'none', pointerEvents: 'none',
+            }}
+          />
+        </div>
+
+        {/* YouTube iframe фон — Классика */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          opacity: active === 'classic' ? 1 : 0,
+          transition: 'opacity 0.8s ease',
+          pointerEvents: 'none',
+        }}>
+          <iframe
+            src="https://www.youtube.com/embed/LDU_Txk06tM?autoplay=1&mute=1&loop=1&playlist=LDU_Txk06tM&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3"
+            allow="autoplay; encrypted-media"
+            style={{
+              position: 'absolute',
+              top: '50%', left: '50%',
+              transform: 'translate(-50%, -50%) scale(1.5)',
+              width: '100vw', height: '56.25vw',
+              minWidth: '177.78vh', minHeight: '100vh',
+              border: 'none', pointerEvents: 'none',
+            }}
+          />
+        </div>
+
+        {/* CSS-заглушка (фолбек если YouTube заблокирован) */}
+        <div className={T.stubClass} style={{ zIndex: 1 }} />
+
+        {/* Оверлей затемнения поверх видео */}
+        <div className={T.overlayClass} style={{ zIndex: 2 }} />
+        <div className={`video-grid ${T.gridClass}`} style={{ zIndex: 3 }} />
+        <div className={`scanline ${T.scanClass}`} style={{ zIndex: 3 }} />
+        <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, zIndex: 4 }} />
       </div>
 
       {/* ═══ ВЫБОР СЕРВЕРА ════════════════════════════════════════════════ */}
