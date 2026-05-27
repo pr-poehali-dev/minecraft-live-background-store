@@ -523,6 +523,15 @@
   }
 }
 
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* =================== SCROLLBAR =================== */
 ::-webkit-scrollbar {
   width: 5px;
